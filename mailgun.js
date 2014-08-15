@@ -141,10 +141,10 @@ Mailgun.prototype.send = function(from, to, subject, text, html) {
   if (html && html !== '')
     body.html = html;
 
-  body = querystring.stringify(body);
-
   if(options && options !== {})
     body.options = JSON.stringify(options);
+
+  body = querystring.stringify(body);
 
   // Prepare our API request.
   var httpsOptions = this._createHttpsOptions('POST', domain);
@@ -198,14 +198,17 @@ Mailgun.prototype.sendText = function(sender, recipients, subject, text) {
     recipients = [recipients];
 
   // Build the HTTP POST body text.
-  var body = querystring.stringify({
+  var body = {
     sender: sender,
     recipients: recipients.join(', '),
     subject: subject,
     body: text
-  });
+  };
+  
   if(options && options !== {})
     body.options = JSON.stringify(options);
+
+  body = querystring.stringify(body);
 
   // Prepare our API request.
   var httpOptions = this._createHttpOptions('messages.txt', 'POST', servername);
