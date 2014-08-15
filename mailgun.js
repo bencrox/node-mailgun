@@ -141,8 +141,13 @@ Mailgun.prototype.send = function(from, to, subject, text, html) {
   if (html && html !== '')
     body.html = html;
 
-  if(options && options !== {})
-    body.options = JSON.stringify(options);
+  if (options && options !== {}) {
+    for (var opt in options) {
+      if (!body.hasOwnProperty(opt)) {
+        body[opt] = options[opt];
+      }
+    }
+  }
 
   body = querystring.stringify(body);
 
@@ -205,8 +210,13 @@ Mailgun.prototype.sendText = function(sender, recipients, subject, text) {
     body: text
   };
   
-  if(options && options !== {})
-    body.options = JSON.stringify(options);
+  if (options && options !== {}) {
+    for (var opt in options) {
+      if (!body.hasOwnProperty(opt)) {
+        body[opt] = options[opt];
+      }
+    }
+  }
 
   body = querystring.stringify(body);
 
