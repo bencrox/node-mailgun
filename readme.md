@@ -1,35 +1,72 @@
 # node-mailgun
 
 This library provides simple access to Mailgun's API for node.js applications.
-It's MIT licensed, and being used in production over at [Hipsell](http://hipsell.com).
+It's MIT licensed, originated by [shz@github](https://github.com/shz/node-mailgun) 
+and being used in production over at [Hipsell](http://hipsell.com).
+
+## Fork notes ( @Bencrox / since 18 Aug, 2014 )
+
+Please refer to the master repo [shz@github](https://github.com/shz/node-mailgun) if you do
+    
+    npm install mailgun
+
+The following is only valid for this transitional fork. 
+Any update and plan here does not reflect the master repo.
 
 ## Installation
 
-    npm install mailgun
+Make sure you have the *node_module* directory
 
-Or you can just throw `mailgun.js` into your application.  There are
-no dependendies outside of node's standard library.
+    git clone https://github.com/bencrox/node-mailgun.git node_module/mailgun
 
-**Note:** `master` on Github is going to be untested/unstable at times,
-          as this is a small enough library that I don't want to bother
-          with a more complicated repo structure.  As such, you should
-          really only rely on the version of `mailgun` in `npm`, as
-          I'll only ever push stable and tested code there.
+If you are not as lazy as I am, figure out correct pathing and clean off uncessary stuff
 
 ## Usage
 
-At the time of writing, Mailgun's documentation is actually incorrect in places,
-which is unfortunate.  As such, I'm going to re-document everything in this README
-according to the actual way it's implemented in `node-mailgun`, which itself
-is based off the implementation from Mailgun's github account, and not the API
-docs on the site.
+Mailgun has been acquired by Rackspace and might have been part of Rackspace email.
+You can check out ( as I do ) the official [Mailgun Documentation](https://github.com/mailgun/documentation).
+
+
+@shz noted that `node-mailgun` is based off the implementation from Mailgun's github account, 
+and not the API docs on the site.
+
+@bencrox is very lazy, and would only verify by implementation step by step.
+
+
 
 ## Initialization
 
 Access to the API is done through a Mailgun object.  It's instantiated
 like so:
 
-    var mg = new Mailgun('api-key');
+    var Mailgun = require('mailgun').Mailgun,
+             mg = new Mailgun('api-key');
+
+@bencrox would like to build a more federated way to store and pick api-keys in mid-to-long run.
+
+## API coverage 
+
+Ab initio, @shz has made the API for sending email, ``sendText`` and ``sendRaw``, 
+and routing inbox, ``createRoute``, ``getRoutes`` and ``deleteRoute``.
+
+@bencrox has a primary aim to explore usage of currenty (Aug 2014) API set from Mailgun, 
+espeically those for tracking and campaign management.
+
+So far, nothing has been added. @bencrox is only forking to read and revise documentation
+and thereby add some roadmap for his own reference and interest.
+
+### Proposed Roadmap @bencrox
+
+ * Implement ``webhooks`` for tracking, which can be seperated as another project.
+ * ``inline`` image reference
+ * update ``sending options`` or ``MIME-headers``
+  ** ``schedule delivery`` by tag
+ * document ``queue`` behavior 
+ * do ``mailing-list`` right
+ * study ``recipient variables`` or ``templating``
+
+
+##### remarks @bencrox. Below are not touched since forking.
 
 ## Sending Email
 
