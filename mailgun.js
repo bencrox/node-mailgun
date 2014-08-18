@@ -59,7 +59,8 @@ var Mailgun = function(apiKey, apiVersion) {
   this._apiKey = apiKey;
   
   // Set up api options
-  this._apiVersion = apiVersion || 'v1';
+  // default apiVersion should be v2, #TODO, fix hardcoded apiVersion
+  this._apiVersion = apiVersion || 'v2';
 };
 
 Mailgun.prototype = {};
