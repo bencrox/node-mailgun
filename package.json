@@ -1,13 +1,26 @@
 {
   "name": "mailgun",
-  "version": "0.4.2",
-  "description": "Mailgun for Node.js",
+  "version": "0.5.1",
+  "description": "(unstable fork from) Mailgun for Node.js",
   "author": "shz",
+  "contributors": [{
+    "name": "Ben Crox", 
+    "email": "ben.crox+github@gmail.com"
+  }],
   "repository": {
     "type": "git",
-    "url": "git@github.com:shz/node-mailgun.git"
+    "url": "git@github.com:bencrox/node-mailgun.git"
   },
+  "bugs": {
+    "url": "https://github.com/bencrox/node-mailgun/issues"
+  },
+  "keywords": [
+    "mailgun",
+    "development"
+  ],
+  "private": true,
   "main": "./mailgun",
-  "homepage": "http://github.com/shz/node-mailgun",
-  "engine": "node"
+  "homepage": "http://github.com/bencrox/node-mailgun",
+  "engine": "node",
+  "license": "MIT"
 }
